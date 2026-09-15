@@ -29,9 +29,9 @@ const copy = {
       eyebrow: 'DATA ANALYST · LYON, FRANCE',
       workflowAria: 'Workflow analytique',
       titleStart: 'Transformer les données brutes en',
-      titleHighlight: 'informations exploitables.',
+      titleHighlight: 'décisions claires.',
       copy:
-        'Je construis des processus analytiques fiables — de la préparation et des contrôles qualité jusqu’aux indicateurs métier et aux visualisations conçues pour faciliter la décision.',
+        'Je construis des workflows analytiques fiables — de la préparation et des contrôles qualité jusqu’aux indicateurs métier et aux visualisations conçues pour faciliter la décision.',
       projectsCta: 'Découvrir les projets',
       skillsAria: 'Compétences principales',
       skills: ['Python', 'SQL', 'Tableau', 'Streamlit', 'Visualisation de données', 'Data Storytelling']
@@ -63,7 +63,7 @@ const copy = {
       lead:
         'Un pipeline Python conçu pour transformer des sorties OCR bruitées issues de tickets de caisse en données d’achat validées et structurées.',
       description:
-        'Le workflow combine des règles métier et l’extraction assistée par LLM pour identifier les enseignes, les produits et les prix, puis applique des contrôles de qualité avant de produire des jeux de données structurés prêts pour l’analyse.',
+        'Le workflow combine des règles métier et l’extraction assistée par LLM pour identifier les enseignes, les produits et les prix, applique des contrôles de qualité, puis agrège les achats validés en indicateurs marque : dépenses, répartition par enseigne et présence concurrentielle.',
       cta: 'Voir le projet sur GitHub',
       previewTitle: 'PIPELINE_02 / TRAITEMENT DES TICKETS',
       previewStatus: 'Validé',
@@ -74,12 +74,22 @@ const copy = {
         enrich: 'ENRICHIR'
       },
       rawLabel: 'OCR BRUT / EXEMPLE SYNTHÉTIQUE',
-      structuredLabel: 'DONNÉES STRUCTURÉES',
+      structuredLabel: 'TICKET STRUCTURÉ',
       retailer: 'ENSEIGNE',
-      product: 'PRODUIT',
-      price: 'PRIX',
+      product01: 'PRODUIT 01',
+      product02: 'PRODUIT 02',
+      brand: 'MARQUE',
+      saving: 'REMISE',
+      receiptTotal: 'TOTAL TICKET',
       statusLabel: 'STATUT',
-      validated: 'VALIDÉ'
+      validated: 'VALIDÉ',
+      analyticsLabel: 'ANALYTICS MARQUE / JEU DE DONNÉES SYNTHÉTIQUE',
+      analyticsBrand: 'ONKEN',
+      totalSpend: 'DÉPENSE TOTALE MARQUE',
+      avgSpend: 'DÉPENSE MOY. MARQUE',
+      topRetailer: 'ENSEIGNE PRINCIPALE',
+      competitors: 'CONCURRENTS IDENTIFIÉS',
+      competitorsValue: '7 identifiés'
     },
     momentum: {
       index: 'PROJET_03 / FOOTBALL ANALYTICS',
@@ -163,7 +173,7 @@ const copy = {
       lead:
         'A Python pipeline designed to transform noisy OCR output from customer receipts into validated and structured purchase data.',
       description:
-        'The workflow combines rule-based processing and LLM-assisted extraction to identify retailers, products and prices, while applying data quality controls before generating structured datasets ready for analysis.',
+        'The workflow combines rule-based processing and LLM-assisted extraction to identify retailers, products and prices, applies data quality controls, then aggregates validated purchases into brand-level analytics such as spend, retailer mix and competitor presence.',
       cta: 'View project on GitHub',
       previewTitle: 'PIPELINE_02 / RECEIPT PROCESSING',
       previewStatus: 'Validated',
@@ -174,12 +184,22 @@ const copy = {
         enrich: 'ENRICH'
       },
       rawLabel: 'RAW OCR / SYNTHETIC EXAMPLE',
-      structuredLabel: 'STRUCTURED DATA',
+      structuredLabel: 'STRUCTURED RECEIPT',
       retailer: 'RETAILER',
-      product: 'PRODUCT',
-      price: 'PRICE',
+      product01: 'PRODUCT 01',
+      product02: 'PRODUCT 02',
+      brand: 'BRAND',
+      saving: 'SAVING',
+      receiptTotal: 'RECEIPT TOTAL',
       statusLabel: 'STATUS',
-      validated: 'VALIDATED'
+      validated: 'VALIDATED',
+      analyticsLabel: 'BRAND ANALYTICS / SYNTHETIC DATASET',
+      analyticsBrand: 'ONKEN',
+      totalSpend: 'TOTAL SPEND ON BRAND',
+      avgSpend: 'AVG SPEND ON BRAND',
+      topRetailer: 'TOP RETAILER',
+      competitors: 'IDENTIFIED COMPETITORS',
+      competitorsValue: '7 identified'
     },
     momentum: {
       index: 'PROJECT_03 / FOOTBALL ANALYTICS',
@@ -427,13 +447,30 @@ T0TAL £3.1O</pre>
                 </div>
 
                 <div>
-                  <dt>{t.ocr.product}</dt>
-                  <dd>Strawberries 400g</dd>
+                  <dt>{t.ocr.product01}</dt>
+                  <dd>Strawberries 400g <span class="ocr-inline-value">£2.75</span></dd>
                 </div>
 
                 <div>
-                  <dt>{t.ocr.price}</dt>
-                  <dd>£2.75</dd>
+                  <dt>{t.ocr.product02}</dt>
+                  <dd>Onken Natural Yogurt 450g <span class="ocr-inline-value">£1.35</span></dd>
+                </div>
+
+                <div>
+                  <dt>{t.ocr.brand}</dt>
+                  <dd class="ocr-brand-value">Onken</dd>
+                </div>
+
+                <div class="ocr-structured-pair">
+                  <span>
+                    <dt>{t.ocr.saving}</dt>
+                    <dd>-£1.00</dd>
+                  </span>
+
+                  <span>
+                    <dt>{t.ocr.receiptTotal}</dt>
+                    <dd>£3.10</dd>
+                  </span>
                 </div>
 
                 <div>
@@ -444,6 +481,38 @@ T0TAL £3.1O</pre>
                   </dd>
                 </div>
               </dl>
+            </div>
+          </div>
+
+          <div class="ocr-analytics">
+            <div class="ocr-analytics-header">
+              <div>
+                <small>{t.ocr.analyticsLabel}</small>
+                <strong>{t.ocr.analyticsBrand}</strong>
+              </div>
+              <span class="ocr-analytics-chip">AGGREGATED OUTPUT</span>
+            </div>
+
+            <div class="ocr-kpis">
+              <div class="ocr-kpi">
+                <small>{t.ocr.totalSpend}</small>
+                <strong>£1,335</strong>
+              </div>
+
+              <div class="ocr-kpi">
+                <small>{t.ocr.avgSpend}</small>
+                <strong>£3.42</strong>
+              </div>
+
+              <div class="ocr-kpi">
+                <small>{t.ocr.topRetailer}</small>
+                <strong>Sainsbury's <span>31%</span></strong>
+              </div>
+
+              <div class="ocr-kpi">
+                <small>{t.ocr.competitors}</small>
+                <strong>{t.ocr.competitorsValue}</strong>
+              </div>
             </div>
           </div>
         </div>
