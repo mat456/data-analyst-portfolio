@@ -4,24 +4,53 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  lang?: 'fr' | 'en';
+  canonicalPath?: string;
 }
 
 const {
   title,
-  description = 'Data Analyst portfolio — analytics, data quality and data visualization.'
-} = Astro.props;
+  description = 'Portfolio Data Analyst — analytics, data quality and data visualization.',
+  lang = 'fr',
+  canonicalPath = Astro.url.pathname
+} = Astro.props as Props;
+
+const site = Astro.site ?? new URL('https://mat-dataportfolio.netlify.app');
+const canonicalUrl = new URL(canonicalPath, site);
+const frUrl = new URL('/', site);
+const enUrl = new URL('/en/', site);
+const ogLocale = lang === 'fr' ? 'fr_FR' : 'en_GB';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <link rel="alternate" hreflang="fr" href={frUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={frUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content="Mathieu Lengrand — Data Analyst" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
     <title>{title}</title>
   </head>
+
   <body>
     <slot />
   </body>
