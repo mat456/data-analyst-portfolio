@@ -105,6 +105,33 @@ const copy = {
       previewBadge: 'Données événementielles',
       videoFallback: 'Votre navigateur ne prend pas en charge la lecture de cette vidéo.'
     },
+    datamart: {
+      index: 'PROJET_04 / ARCHITECTURE ANALYTIQUE',
+      status: 'STATUT : CAS D’USAGE PROFESSIONNEL',
+      title: 'Insurance Reporting Data Mart',
+      lead:
+        'Un projet d’intégration de données visant à consolider plusieurs sources et construire un data mart fiable pour le reporting et l’analyse.',
+      description:
+        'Les données provenaient d’un data mart existant, de fichiers Excel et d’un système de gestion utilisé comme référence pour les contrôles de cohérence. Sous SAS Enterprise Guide, les traitements SAS/SQL suivaient une architecture RAW, STAGING et MART afin de standardiser, rapprocher et fiabiliser les données avant leur utilisation pour le reporting et l’analyse métier.',
+      previewAria: 'Schéma d’architecture du data mart assurance',
+      previewTitle: 'PIPELINE_04 / ARCHITECTURE ANALYTIQUE',
+      previewBadge: 'SAS / SQL',
+      sourcesLabel: 'SOURCES',
+      sourceDatamart: 'DATA MART EXISTANT',
+      sourceExcel: 'FICHIERS EXCEL',
+      sourceManagement: 'SYSTÈME DE GESTION',
+      rawLabel: 'RAW',
+      rawDetail: 'Données sources',
+      stagingLabel: 'STAGING',
+      stagingDetail: 'Standardisation · Transformations',
+      qualityLabel: 'DATA QUALITY',
+      qualityDetail: 'Rapprochement avec le système de gestion',
+      martLabel: 'MART',
+      martDetail: 'Modèle analytique',
+      outputReporting: 'REPORTING',
+      outputAnalysis: 'ANALYSE MÉTIER',
+      footer: 'MULTI-SOURCES → CONTRÔLES → MODÈLE ANALYTIQUE → REPORTING FIABLE'
+    },
     about: {
       label: '02 / À PROPOS',
       title: 'L’analyse de données avec une approche orientée métier.',
@@ -139,7 +166,7 @@ const copy = {
       eyebrow: 'DATA ANALYST · LYON, FRANCE',
       workflowAria: 'Analytics workflow',
       titleStart: 'Turning raw data into',
-      titleHighlight: 'clear insights.',
+      titleHighlight: 'clear, actionable insights.',
       copy:
         'I build reliable analytics workflows — from data preparation and quality checks to business metrics and visualizations that make complex information easier to understand and use.',
       projectsCta: 'Explore projects',
@@ -214,6 +241,33 @@ const copy = {
       previewTitle: 'PSG vs Arsenal · Match dynamics',
       previewBadge: 'Event data',
       videoFallback: 'Your browser does not support the video tag.'
+    },
+    datamart: {
+      index: 'PROJECT_04 / ANALYTICAL ARCHITECTURE',
+      status: 'STATUS: PROFESSIONAL USE CASE',
+      title: 'Insurance Reporting Data Mart',
+      lead:
+        'A data integration project designed to consolidate multiple sources and build a reliable analytical data mart for reporting and business analysis.',
+      description:
+        'Data was collected from an existing data mart, Excel files and a management system that also served as a reference for consistency checks. Using SAS Enterprise Guide, SAS/SQL transformations were structured across RAW, STAGING and MART layers to standardize, reconcile and validate the data before making it available for reporting and business analysis.',
+      previewAria: 'Insurance reporting data mart architecture diagram',
+      previewTitle: 'PIPELINE_04 / ANALYTICAL ARCHITECTURE',
+      previewBadge: 'SAS / SQL',
+      sourcesLabel: 'SOURCES',
+      sourceDatamart: 'EXISTING DATA MART',
+      sourceExcel: 'EXCEL FILES',
+      sourceManagement: 'MANAGEMENT SYSTEM',
+      rawLabel: 'RAW',
+      rawDetail: 'Source data',
+      stagingLabel: 'STAGING',
+      stagingDetail: 'Standardize · Transform',
+      qualityLabel: 'DATA QUALITY',
+      qualityDetail: 'Reconcile with management system',
+      martLabel: 'MART',
+      martDetail: 'Analytical model',
+      outputReporting: 'REPORTING',
+      outputAnalysis: 'BUSINESS ANALYSIS',
+      footer: 'MULTI-SOURCE → QUALITY CHECKS → ANALYTICAL MODEL → RELIABLE REPORTING'
     },
     about: {
       label: '02 / ABOUT',
@@ -579,6 +633,118 @@ T0TAL £3.1O</pre>
 
               {t.momentum.videoFallback}
             </video>
+          </div>
+        </div>
+      </article>
+
+      <article class="datamart-project">
+        <div class="datamart-copy">
+          <div class="project-statusline">
+            <div class="project-index">
+              <span class="status-dot"></span>
+              {t.datamart.index}
+            </div>
+
+            <div class="project-state">
+              <span class="state-led"></span>
+              {t.datamart.status}
+            </div>
+          </div>
+
+          <h3>{t.datamart.title}</h3>
+
+          <p class="project-lead">{t.datamart.lead}</p>
+
+          <p class="project-description">{t.datamart.description}</p>
+
+          <div class="tags">
+            <span>SAS Enterprise Guide</span>
+            <span>SQL</span>
+            <span>ETL</span>
+            <span>Data Mart</span>
+            <span>Data Quality</span>
+          </div>
+        </div>
+
+        <div class="datamart-preview" aria-label={t.datamart.previewAria}>
+          <div class="datamart-preview-header">
+            <div>
+              <small class="preview-id">{t.datamart.previewTitle}</small>
+              <span>RAW → STAGING → MART</span>
+            </div>
+
+            <span class="datamart-preview-pill">{t.datamart.previewBadge}</span>
+          </div>
+
+          <div class="datamart-sources-label">{t.datamart.sourcesLabel}</div>
+
+          <div class="datamart-sources">
+            <div class="datamart-source-card">
+              <span class="source-icon">DB</span>
+              <strong>{t.datamart.sourceDatamart}</strong>
+            </div>
+
+            <div class="datamart-source-card">
+              <span class="source-icon">XLS</span>
+              <strong>{t.datamart.sourceExcel}</strong>
+            </div>
+
+            <div class="datamart-source-card datamart-source-reference">
+              <span class="source-icon">SYS</span>
+              <strong>{t.datamart.sourceManagement}</strong>
+              <small>REFERENCE</small>
+            </div>
+          </div>
+
+          <div class="datamart-flow">
+            <div class="datamart-layer">
+              <small>01 / INGEST</small>
+              <strong>{t.datamart.rawLabel}</strong>
+              <span>{t.datamart.rawDetail}</span>
+            </div>
+
+            <div class="datamart-arrow">→</div>
+
+            <div class="datamart-layer datamart-layer-staging">
+              <small>02 / TRANSFORM</small>
+              <strong>{t.datamart.stagingLabel}</strong>
+              <span>{t.datamart.stagingDetail}</span>
+
+              <div class="datamart-quality-check">
+                <span class="state-led"></span>
+                <div>
+                  <b>{t.datamart.qualityLabel}</b>
+                  <small>{t.datamart.qualityDetail}</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="datamart-arrow">→</div>
+
+            <div class="datamart-layer datamart-layer-mart">
+              <small>03 / SERVE</small>
+              <strong>{t.datamart.martLabel}</strong>
+              <span>{t.datamart.martDetail}</span>
+            </div>
+          </div>
+
+          <div class="datamart-output-arrow">↓</div>
+
+          <div class="datamart-outputs">
+            <div>
+              <small>OUTPUT_01</small>
+              <strong>{t.datamart.outputReporting}</strong>
+            </div>
+
+            <div>
+              <small>OUTPUT_02</small>
+              <strong>{t.datamart.outputAnalysis}</strong>
+            </div>
+          </div>
+
+          <div class="datamart-footer">
+            <span class="state-led"></span>
+            <small>{t.datamart.footer}</small>
           </div>
         </div>
       </article>
