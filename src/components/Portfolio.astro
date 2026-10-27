@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import portraitUrl from '../../photo/photo.webp?url';
 
 interface Props {
   lang?: 'fr' | 'en';
@@ -757,32 +758,44 @@ T0TAL £3.1O</pre>
       </div>
 
       <div class="about-layout">
-        <div class="about-copy">
-          <p>{t.about.p1}</p>
-          <p>{t.about.p2}</p>
+        <img
+          class="about-portrait"
+          src={portraitUrl}
+          alt="Mathieu Lengrand — Data Analyst"
+          width="1048"
+          height="1310"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <div class="about-details">
+          <div class="about-copy">
+            <p>{t.about.p1}</p>
+            <p>{t.about.p2}</p>
+          </div>
+
+          <dl class="profile-console" aria-label={t.about.consoleAria}>
+            <div>
+              <dt>{t.about.location}</dt>
+              <dd>{t.about.locationValue}</dd>
+            </div>
+
+            <div>
+              <dt>{t.about.focus}</dt>
+              <dd>{t.about.focusValue}</dd>
+            </div>
+
+            <div>
+              <dt>{t.about.core}</dt>
+              <dd>{t.about.coreValue}</dd>
+            </div>
+
+            <div>
+              <dt>{t.about.mode}</dt>
+              <dd><span class="state-led"></span> {t.about.modeValue}</dd>
+            </div>
+          </dl>
         </div>
-
-        <dl class="profile-console" aria-label={t.about.consoleAria}>
-          <div>
-            <dt>{t.about.location}</dt>
-            <dd>{t.about.locationValue}</dd>
-          </div>
-
-          <div>
-            <dt>{t.about.focus}</dt>
-            <dd>{t.about.focusValue}</dd>
-          </div>
-
-          <div>
-            <dt>{t.about.core}</dt>
-            <dd>{t.about.coreValue}</dd>
-          </div>
-
-          <div>
-            <dt>{t.about.mode}</dt>
-            <dd><span class="state-led"></span> {t.about.modeValue}</dd>
-          </div>
-        </dl>
       </div>
     </section>
   </main>
